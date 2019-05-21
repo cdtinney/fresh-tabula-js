@@ -29,8 +29,8 @@ node_modules
 # Optional REPL history
 .node_repl_history
 
-# TODO
-TODO*.txt
+# MacOS
+.DS_Store
 
 # Environment vars
 .env
