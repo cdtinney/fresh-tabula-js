@@ -1,7 +1,7 @@
 # fresh-tabula-js
 > Convert tables inside PDFs to CSV via [`tabula-java`](https://github.com/tabulapdf/tabula-java) using JavaScript.
 
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![Build Status](https://travis-ci.org/cdtinney/fresh-tabula-js.svg?branch=master)](https://travis-ci.org/cdtinney/fresh-tabula-js) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 This is a maintained fork of the [`tabula-js`](https://github.com/ezodude/tabula-js) package, with changes such as:
 
