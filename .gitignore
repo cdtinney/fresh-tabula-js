@@ -34,3 +34,6 @@ TODO*.txt
 
 # Environment vars
 .env
+
+# Builds
+lib
