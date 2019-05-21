@@ -62,7 +62,7 @@ Options are passed to APIs via plain objects.
 | columns | String | none | X coordinates of column boundaries. Example `"10.1,20.2,30.3"` |
 | debug | Boolean | `false` | Print detected table areas instead of processing them. |
 | guess | Boolean | `true` | Guess the portion(s) of the page to analyze and process. |
-| silent | Boolean | `false` | Suppress all `stderr` output. |
+| silent | Boolean | `false` | Suppresses all `stderr` output from the `tabula-java` JAR **only**. JavaScript errors will still be logged. |
 | noSpreadsheet | Boolean | `false` | Force PDF not to be extracted using spreadsheet-style  extraction (if there are ruling lines separating each cell, as in a PDF of an Excel spreadsheet). |
 | pages | String | `1` | Comma separated list of ranges, or `all`. E.g. `1-3,5-7`, `3`, `all`.
 | spreadsheet | Boolean | `false` | Force PDF to be extracted using spreadsheet-style extraction (if there are ruling lines separating each cell, as in a PDF of an Excel spreadsheet). |
