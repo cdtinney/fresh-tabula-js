@@ -25,7 +25,7 @@ This is a maintained fork of the [`tabula-js`](https://github.com/ezodude/tabula
 
 ### Requirements
 
-- Java Development Kit (JDK) with `java` available on command-line
+- Java Development Kit (JDK) with `java` available via command-line
 - Node.js/npm
 
 ### Installing
@@ -38,7 +38,7 @@ $ npm install --save fresh-tabula-js
 
 ### Usage
 
-Simply import the module:
+Import the module:
 
 ```javascript
 const tabula = require('fresh-tabula-js');
@@ -55,9 +55,9 @@ table.extractCsv((err, data) => {
 
 ### Options
 
-Options mimic [`tabula-java`](https://github.com/tabulapdf/tabula-java#usage-examples) with some exceptions, such as the inability to write the output to file. Extracted data is available through callbacks, streams, and return values.
+Options are passed through to [`tabula-java`](https://github.com/tabulapdf/tabula-java#usage-examples) with some exceptions, such as the inability to write the output to file (`-o`). Extracted data is available through callbacks, streams, and return values.
 
-Options are passed to APIs via plain objects.
+Options are structured as a plain object.
 
 | Key | Type | Default | Description |
 | - | - | - | - |
@@ -100,6 +100,8 @@ const extractData = async () => {
 #### `extractStreamCsv`
 
 Use this method to process extracted data from the CSV using callbacks, via streams.
+
+Callbacks will be executed for each parsed section of the PDF.
 
 Extracted data is a string representing an array of all rows (in CSV format) found, including headers.
 
