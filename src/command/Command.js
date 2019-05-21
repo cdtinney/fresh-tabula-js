@@ -19,10 +19,8 @@ const parseCommandArgs = (args = {}) => {
           return acc.concat(modifiedKey, curr);
         }, []),
       );
-    } else if (typeof value === 'boolean') {
-      if (value) {
-        return acc.concat(modifiedKey);
-      }
+    } else if (typeof value === 'boolean' && value) {
+      return acc.concat(modifiedKey);
     }
 
     return acc.concat(modifiedKey, value);
