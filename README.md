@@ -3,7 +3,9 @@
 
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-This is a maintained fork of the [`tabula-js`](https://github.com/ezodude/tabula-js) package.
+This is a maintained fork of the [`tabula-js`](https://github.com/ezodude/tabula-js) package, with some changes:
+
+* `async`/`await` support
 
 ## Contents
 
@@ -15,6 +17,7 @@ This is a maintained fork of the [`tabula-js`](https://github.com/ezodude/tabula
   - [Options](#options)
   - [API](#api)
     - [`extractCsv`](#extractcsv)
+    - [`extractStreamCsv`](#extractstreamcsv)
     - [`streamCsv`](#streamcsv)
 - [Acknowledgements](#acknowledgements)
 
@@ -73,12 +76,37 @@ Options are passed to APIs via plain objects.
 
 #### `extractCsv`
 
-This is the simplest API. It's uses a classic Node style callback ```(err, data)```. The extracted CSV string is an array of all rows found in the data table, including any headers.
+Use this method to process extracted data from the CSV using `async`/`await`.
+
+It returns an object in the following format:
+
+```json
+{
+  output: <String>,
+  error: <String>,
+}
+```
+
+Example:
+
+```js
+const tabula = require('tabula-js');
+const extractData = async () => {
+  const table = tabula(source.pdf);
+  return await table.extractCsv();
+};
+```
+
+#### `extractStreamCsv`
+
+Use this method to process extracted data from the CSV using callbacks, via streams.
+
+Extracted data is a string representing an array of all rows (in CSV format) found, including headers.
 
 ``` js
 const tabula = require('tabula-js');
 const table = tabula(source.pdf);
-table.extractCsv((err, data) => console.log(data));
+table.extractStreamCsv((err, data) => console.log(data));
 ```
 
 We can use the `area` option to analyze specific portions of the document.
@@ -88,12 +116,12 @@ const tabula = require('tabula-js');
 const table = tabula(source.pdf, {
   area: "269.875,150,690,545",
 });
-table.extractCsv((err, data) => console.log(data));
+table.extractStreamCsv((err, data) => console.log(data));
 ```
 
 #### `streamCsv`
 
-This API allows extracted data to be processed as a stream.
+This is used to directly process data from the CSV via stream.
 
 Example:
 
