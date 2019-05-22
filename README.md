@@ -5,7 +5,7 @@
 
 This is a maintained fork of the [`tabula-js`](https://github.com/ezodude/tabula-js) package, with changes such as:
 
-* `async`/`await` support
+* Non-stream asynchronous extraction (use `async`/`await`)
 
 ## Contents
 
