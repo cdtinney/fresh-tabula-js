@@ -7,6 +7,8 @@ This is a maintained fork of the [`tabula-js`](https://github.com/ezodude/tabula
 
 * Non-stream asynchronous extraction (use `async`/`await`)
 
+**Please submit any issues (or e-mail me).**
+
 ## Contents
 
 - [Contents](#contents)
@@ -14,8 +16,9 @@ This is a maintained fork of the [`tabula-js`](https://github.com/ezodude/tabula
   - [Requirements](#requirements)
   - [Installing](#installing)
   - [Usage](#usage)
-  - [Options](#options)
 - [API](#api)
+  - [Options](#options)
+  - [Methods](#methods)
     - [`extractCsv`](#extractcsv)
     - [`extractStreamCsv`](#extractstreamcsv)
     - [`streamCsv`](#streamcsv)
@@ -42,19 +45,36 @@ $ npm install --save fresh-tabula-js
 Import the module:
 
 ```javascript
+// 1. Import the module
 const tabula = require('fresh-tabula-js');
-const table = tabula('data/foobar.pdf');
-table.extractCsv((err, data) => {
-  if (err) {
-    console.error(err);
-    return;
-  }
-
+const extractData = async () => {
+  // 2. Instantiate a table via passing a path to a PDF (this can be relative or absolute)
+  const table = tabula('data/foobar.pdf');
+  // 3. Call an extraction method
+  const data = await table.extractCsv();
   console.log(data);
-});
+  return data;
+};
+// 4. Call the method!
+extractData();
+```
+
+## API
+
+First, an instance of Tabula must be instantiated via calling `tabula`
+with a path (relative or absolute) to a valid PDF.
+
+Example:
+
+```javascript
+const tabula = require('fresh-tabula-js');
+const table = tabula('path/to/pdf/foobar.pdf');
+// Do stuff
 ```
 
 ### Options
+
+All extraction methods support the same set of options.
 
 Options are passed through to [`tabula-java`](https://github.com/tabulapdf/tabula-java#usage-examples) with some exceptions, such as the inability to write the output to file (`-o`). Extracted data is available through callbacks, streams, and return values.
 
@@ -73,7 +93,7 @@ Options are structured as a plain object.
 | password | String | empty | Password used to decrypt/access the document. |
 | useLineReturns | Boolean | `false` | Use embedded line returns in cells (only in spreadsheet mode). |
 
-## API
+### Methods
 
 #### `extractCsv`
 
@@ -81,7 +101,7 @@ Use this method to process extracted data from the CSV using `async`/`await`.
 
 It returns an object in the following format:
 
-```json
+```
 {
   output: <String>,
   error: <String>,
@@ -93,7 +113,7 @@ Example:
 ```js
 const tabula = require('tabula-js');
 const extractData = async () => {
-  const table = tabula(source.pdf);
+  const table = tabula('dir/foobar.pdf');
   return await table.extractCsv();
 };
 ```
@@ -108,7 +128,7 @@ Extracted data is a string representing an array of all rows (in CSV format) fou
 
 ``` js
 const tabula = require('tabula-js');
-const table = tabula(source.pdf);
+const table = tabula('dir/foobar.pdf');
 table.extractStreamCsv((err, data) => console.log(data));
 ```
 
@@ -116,7 +136,7 @@ We can use the `area` option to analyze specific portions of the document.
 
 ``` js
 const tabula = require('tabula-js');
-const table = tabula(source.pdf, {
+const table = tabula('dir/foobar.pdf', {
   area: "269.875,150,690,545",
 });
 table.extractStreamCsv((err, data) => console.log(data));
@@ -130,7 +150,7 @@ Example:
 
 ``` js
 const tabula = require('tabula-js');
-const stream = tabula(source.pdf).streamCsv();
+const stream = tabula('dir/foobar.pdf').streamCsv();
 stream.pipe(process.stdout);
 ```
 
@@ -142,7 +162,7 @@ Example:
 
 ``` js
 const tabula = require('tabula-js');
-const stream = tabula(source.pdf).streamCsv();
+const stream = tabula('dir/foobar.pdf').streamCsv();
 stream
   .split()
   .doto(console.log)
@@ -155,5 +175,5 @@ TODO
 
 ## Acknowledgements
 
-* [Ezo Saleh](https://github.com/ezodude), [original author](https://github.com/ezodude/tabula-js)
-* [tabula-java](https://github.com/tabulapdf/tabula-java) team
+* [Ezo Saleh](https://github.com/ezodude), [original author](https://github.com/ezodude/tabula-js) of this package
+* The [tabula-java](https://github.com/tabulapdf/tabula-java) team
