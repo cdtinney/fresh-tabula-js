@@ -4,10 +4,10 @@ const path = require('path')
 const {
   spawn,
   spawnSync,
-} = require('child_process');
+} = require('child_process')
 const _ = require('lodash');
 
-const JAR_PATH = path.join(__dirname, '../../bin/jar/tabula-java.jar');
+const JAR_PATH = path.join(__dirname, '../bin/jar/tabula-java.jar');
 const parseCommandArgs = (args = {}) => {
   return Object.entries(args).reduce((acc, curr) => {
     const [ key, value ] = curr;
