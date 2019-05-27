@@ -31,6 +31,9 @@ This is a maintained fork of the [`tabula-js`](https://github.com/ezodude/tabula
 
 ## Getting Started
 
+**Only Node.js environments are supported due to file-system usage requirements. The package is exported
+as a CommonJS module.**
+
 ### Requirements
 
 - Java Development Kit (JDK) with `java` available via command-line
