@@ -23,6 +23,9 @@ This is a maintained fork of the [`tabula-js`](https://github.com/ezodude/tabula
     - [`extractStreamCsv`](#extractstreamcsv)
     - [`streamCsv`](#streamcsv)
 - [Developing](#developing)
+  - [Branches](#branches)
+  - [Commit Messages](#commit-messages)
+  - [Getting Started](#getting-started-1)
 - [Acknowledgements](#acknowledgements)
 
 ## Getting Started
@@ -171,7 +174,50 @@ stream
 
 ## Developing
 
-TODO
+### Branches
+
+Development is done in the `develop` branch.
+
+When `master` changes (e.g. via pull request), [Travis CI](https://travis-ci.org/cdtinney/fresh-tabula-js) will build and deploy a new version of
+the package using semantic versioning based on commit messages to determine the version type.
+
+### Commit Messages
+
+**Commit messages must be formatted according to the [conventional commits Angular spec](https://www.conventionalcommits.org/en/v1.0.0-beta.2/#summary).**
+
+Additionally, the following custom commit message types will result in a patch release:
+
+* `docs`
+* `ci`
+* `refactor`
+
+These rules can be viewed in `release.config.js`.
+
+### Getting Started
+
+1. Clone the repository.
+2. Switch to `develop`.
+3. Install dependencies:
+
+    ```
+    $ npm install
+    ```
+
+4. Write code!
+5. Run tests:
+
+    ```
+    $ npm run test
+    ```
+
+6. Test deployment builds:
+
+    ```
+    $ npm run build
+    ```
+
+7. Push the changes to `develop`.
+8. Merge to `master` via pull request. [Travis CI](https://travis-ci.org/cdtinney/fresh-tabula-js) will build and deploy to [NPM](https://npmjs.com/package/fresh-tabula-js).
 
 ## Acknowledgements
 
