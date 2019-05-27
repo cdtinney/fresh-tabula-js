@@ -177,3 +177,4 @@ TODO
 
 * [Ezo Saleh](https://github.com/ezodude), [original author](https://github.com/ezodude/tabula-js) of this package
 * The [tabula-java](https://github.com/tabulapdf/tabula-java) team
+* [tabula](https://tabula.technology/)
