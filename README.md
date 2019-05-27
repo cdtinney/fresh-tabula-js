@@ -26,6 +26,7 @@ This is a maintained fork of the [`tabula-js`](https://github.com/ezodude/tabula
   - [Branches](#branches)
   - [Commit Messages](#commit-messages)
   - [Getting Started](#getting-started-1)
+  - [Additional Commands](#additional-commands)
 - [Acknowledgements](#acknowledgements)
 
 ## Getting Started
@@ -218,6 +219,14 @@ These rules can be viewed in `release.config.js`.
 
 7. Push the changes to `develop`.
 8. Merge to `master` via pull request. [Travis CI](https://travis-ci.org/cdtinney/fresh-tabula-js) will build and deploy to [NPM](https://npmjs.com/package/fresh-tabula-js).
+
+### Additional Commands
+
+To run tests in watch mode:
+
+```
+$ npm run test:watch
+```
 
 ## Acknowledgements
 

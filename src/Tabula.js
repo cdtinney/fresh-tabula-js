@@ -1,5 +1,5 @@
 const highlandProc = require('highland-process');
-const Command = require('./command/Command');
+const Command = require('./Command');
 
 class Tabula {
   constructor(pdfPath, options) {
