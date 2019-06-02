@@ -12,6 +12,7 @@
     "build": "rm -rf lib && rollup --config",
     "test": "jest src",
     "test:cov": "npm run test -- --coverage",
+    "test:cov-report": "npm run test:cov && coveralls",
     "test:watch": "npm run test -- --watch"
   },
   "repository": {
@@ -33,6 +34,7 @@
   "homepage": "https://github.com/cdtinney/fresh-tabula-js#readme",
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
+    "coveralls": "^3.0.3",
     "highland": "^2.13.4",
     "highland-process": "^1.0.5",
     "lodash": "^4.17.11"

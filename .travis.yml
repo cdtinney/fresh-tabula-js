@@ -6,7 +6,7 @@ node_js:
 jobs:
   include:
     - stage: test
-      script: npm run test
+      script: npm run test:cov-report
     - stage: build
       script: npm run build
     - stage: release
