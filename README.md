@@ -90,16 +90,16 @@ Options are structured as a plain object.
 
 | Key | Type | Default | Description |
 | - | - | - | - |
-| Area | String or Array | Entire page | Co-ordinates of the portion(s) of the page to analyze, formatted in strings in the following format `top,left,bottom,right`. For example, `269.875,12.75,790.5,561` or `["269.875,12.75,790.5,561", "132.45,23.2,256.3,534"]`.
-| columns | String | none | X coordinates of column boundaries. Example `"10.1,20.2,30.3"` |
-| debug | Boolean | `false` | Print detected table areas instead of processing them. |
-| guess | Boolean | `true` | Guess the portion(s) of the page to analyze and process. |
-| silent | Boolean | `false` | Suppresses all `stderr` output from the `tabula-java` JAR **only**. JavaScript errors will still be logged. |
-| noSpreadsheet | Boolean | `false` | Force PDF not to be extracted using spreadsheet-style  extraction (if there are ruling lines separating each cell, as in a PDF of an Excel spreadsheet). |
-| pages | String | `1` | Comma separated list of ranges, or `all`. E.g. `1-3,5-7`, `3`, `all`.
-| spreadsheet | Boolean | `false` | Force PDF to be extracted using spreadsheet-style extraction (if there are ruling lines separating each cell, as in a PDF of an Excel spreadsheet). |
-| password | String | empty | Password used to decrypt/access the document. |
-| useLineReturns | Boolean | `false` | Use embedded line returns in cells (only in spreadsheet mode). |
+| `area` | String or Array | Entire page | Co-ordinates of the portion(s) of the page to analyze, formatted in strings in the following format `top,left,bottom,right`. For example, `269.875,12.75,790.5,561` or `["269.875,12.75,790.5,561", "132.45,23.2,256.3,534"]`.
+| `columns` | String | none | X coordinates of column boundaries. Example `"10.1,20.2,30.3"` |
+| `debug` | Boolean | `false` | Print detected table areas instead of processing them. |
+| `guess` | Boolean | `true` | Guess the portion(s) of the page to analyze and process. |
+| `silent` | Boolean | `false` | Suppresses all `stderr` output from the `tabula-java` JAR **only**. JavaScript errors will still be logged. |
+| `noSpreadsheet` | Boolean | `false` | Force PDF not to be extracted using spreadsheet-style  extraction (if there are ruling lines separating each cell, as in a PDF of an Excel spreadsheet). |
+| `pages` | String | `1` | Comma separated list of ranges, or `all`. E.g. `1-3,5-7`, `3`, `all`.
+| `spreadsheet` | Boolean | `false` | Force PDF to be extracted using spreadsheet-style extraction (if there are ruling lines separating each cell, as in a PDF of an Excel spreadsheet). |
+| `password` | String | empty | Password used to decrypt/access the document. |
+| `useLineReturns` | Boolean | `false` | Use embedded line returns in cells (only in spreadsheet mode). |
 
 ### Methods
 
