@@ -37,3 +37,6 @@ node_modules
 
 # Builds
 lib
+
+# Coveralls
+.coveralls.yml
