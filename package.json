@@ -11,7 +11,7 @@
   "scripts": {
     "build": "rm -rf lib && rollup --config",
     "test": "jest src",
-    "test:cov": "npm run test -- --coverage",
+    "test:cov": "npm run test -- --coverage --detectOpenHandles --forceExit",
     "test:cov-report": "npm run test:cov && coveralls",
     "test:watch": "npm run test -- --watch"
   },
