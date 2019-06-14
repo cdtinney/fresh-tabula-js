@@ -9,8 +9,7 @@ class Tabula {
 
   streamCsv() {
     return highlandProc
-      .from(new Command(this._pdfPath, this._options))
-      .run();
+      .from((new Command(this._pdfPath, this._options)).run());
   }
 
   extractStreamCsv(callback) {
