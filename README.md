@@ -24,10 +24,13 @@ with changes such as:
     - [`Tabula.extractStreamCsv`](#tabulaextractstreamcsv)
     - [`Tabula.streamCsv`](#tabulastreamcsv)
 - [Developing](#developing)
-  - [Branches](#branches)
-  - [Commit Messages](#commit-messages)
-  - [Getting Started](#getting-started-1)
-  - [Additional Commands](#additional-commands)
+  - [Introduction](#introduction)
+    - [Branch Usage](#branch-usage)
+    - [Commit Message Convention](#commit-message-convention)
+  - [Installing](#installing-1)
+  - [Testing](#testing)
+  - [Building](#building)
+  - [Deploying](#deploying)
 - [Acknowledgements](#acknowledgements)
 
 ## Getting Started
@@ -179,7 +182,9 @@ stream.split()
 
 ## Developing
 
-### Branches
+### Introduction 
+
+#### Branch Usage
 
 Development is done in the `develop` branch.
 
@@ -187,46 +192,53 @@ When `master` changes (e.g. via pull request), [Travis CI](https://travis-ci.org
 will build and deploy a new version of the package using semantic versioning based on commit messages
 to determine the version type.
 
-### Commit Messages
+#### Commit Message Convention
 
-**Commit messages must be formatted according to the [conventional commits Angular spec](https://www.conventionalcommits.org/en/v1.0.0-beta.2/#summary).**
+**Commit messages must be formatted according to the [conventional commits Angular spec](https://www.conventionalcommits.org/en/v1.0.0-beta.2/#summary):**
 
-Additionally, the following custom commit message types will result in a patch release:
+```
+<type>[optional scope]: <description>
 
-* `docs`
-* `ci`
-* `refactor`
+[optional body]
 
-These rules can be viewed in `release.config.js`.
+[optional footer]
+```
 
-### Getting Started
+The following types are supported:
+  * **build**: Changes that affect the build system or npm dependencies
+  * **ci**: Changes to CI config (e.g. Travis CI config changes)
+  * **docs**: Documentation-only changes
+  * **feat**: New features
+  * **fix**: Bug fix
+  * **perf**: Code change related to performance
+  * **refactor**: A code change that neither fixes a bug nor adds a feature
+  * **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc.)
+  * **test**: Adding missing tests or correcting existing tests
+
+Rules configuration is found in in `release.config.js`.
+
+### Installing
 
 1. Clone the repository.
-2. Switch to `develop`.
+2. Switch to the `develop` branch:
+
+    ```
+    git checkout develop
+    ```
+
 3. Install dependencies:
 
     ```
     $ npm install
     ```
 
-4. Write code!
-5. Run tests:
+### Testing
 
-    ```
-    $ npm run test
-    ```
+To run tests:
 
-6. Test deployment builds:
-
-    ```
-    $ npm run build
-    ```
-
-7. Push the changes to `develop`.
-8. Merge to `master` via pull request. [Travis CI](https://travis-ci.org/cdtinney/fresh-tabula-js) will 
-    build and deploy to [NPM](https://npmjs.com/package/fresh-tabula-js).
-
-### Additional Commands
+```
+$ npm run test
+```
 
 To run tests in watch mode:
 
@@ -239,6 +251,21 @@ To run test coverage:
 ```
 $ npm run test:cov
 ```
+
+### Building
+
+To run deployment builds:
+
+```
+$ npm run build
+```
+
+### Deploying
+
+1. Push the changes to `develop`.
+2. Merge to `master` via pull request.
+
+[Travis CI](https://travis-ci.org/cdtinney/fresh-tabula-js) will build and deploy the new version of the package (based on semantic commits) to [NPM](https://npmjs.com/package/fresh-tabula-js).
 
 ## Acknowledgements
 
