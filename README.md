@@ -20,9 +20,9 @@ with changes such as:
 - [API](#api)
   - [Options](#options)
   - [Methods](#methods)
-    - [`Tabula.extractCsv`](#tabulaextractcsv)
-    - [`Tabula.extractStreamCsv`](#tabulaextractstreamcsv)
-    - [`Tabula.streamCsv`](#tabulastreamcsv)
+    - [`Tabula.getData`](#tabulagetdata)
+    - [`Tabula.streamSections`](#tabulastreamsections)
+    - [`Tabula.stream`](#tabulastream)
 - [Developing](#developing)
   - [Introduction](#introduction)
     - [Branch Usage](#branch-usage)
@@ -62,12 +62,10 @@ const extractData = async () => {
   // 2. Instantiate a table via passing a path to a PDF (this can be relative or absolute)
   const table = new Tabula('data/foobar.pdf');
   // 3. Call an extraction method
-  const data = await table.extractCsv();
-  console.log(data);
-  return data;
+  return await table.getData();
 };
 // 4. Call the method!
-extractData();
+const data = extractData();
 ```
 
 ## API
@@ -106,7 +104,7 @@ Options are structured as a plain object.
 
 ### Methods
 
-#### `Tabula.extractCsv`
+#### `Tabula.getData`
 
 Use this method to process extracted data from PDF asynchronously using `async`/`await`.
 
@@ -123,15 +121,15 @@ Example:
 
 ```js
 const Tabula = require('fresh-tabula-js');
-const extractData = async () => {
+const data = async () => {
   const table = new Tabula('dir/foobar.pdf');
-  return await table.extractCsv();
+  return await table.getData();
 };
 ```
 
-#### `Tabula.extractStreamCsv`
+#### `Tabula.streamSections`
 
-Use this method to process extracted data from PDFs using callbacks, via streams.
+Use this method to process extracted data in sections (**separate tables**).
 
 Callbacks will be executed for each parsed section of the PDF.
 
@@ -141,7 +139,7 @@ including headers.
 ``` js
 const Tabula = require('fresh-tabula-js');
 const table = new Tabula('dir/foobar.pdf');
-table.extractStreamCsv((err, data) => console.log(data));
+table.streamSections((err, data) => console.log(data));
 ```
 
 We can use the `area` option to analyze specific portions of the document.
@@ -151,10 +149,10 @@ const Tabula = require('fresh-tabula-js');
 const table = new Tabula('dir/foobar.pdf', {
   area: "269.875,150,690,545",
 });
-table.extractStreamCsv((err, data) => console.log(data));
+table.streamSections((err, data) => console.log(data));
 ```
 
-#### `Tabula.streamCsv`
+#### `Tabula.stream`
 
 This is used to process data from PDFs via streams.
 
@@ -162,8 +160,9 @@ Example:
 
 ``` js
 const Tabula = require('fresh-tabula-js');
-const stream = new Tabula('dir/foobar.pdf').streamCsv();
-stream.pipe(process.stdout);
+new Tabula('dir/foobar.pdf')
+  .stream()
+  .pipe(process.stdout);
 ```
 
 The underlying library is built on streams using [Highland.js](http://highlandjs.org/).
@@ -174,7 +173,8 @@ Example:
 
 ``` js
 const Tabula = require('fresh-tabula-js');
-const stream = new Tabula('dir/foobar.pdf').streamCsv();
+const stream = new Tabula('dir/foobar.pdf')
+  .stream();
 stream.split()
   .doto(console.log)
   .done(() => console.log('All done!'));

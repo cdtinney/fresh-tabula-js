@@ -7,13 +7,13 @@ class Tabula {
     this._options = options;
   }
 
-  streamCsv() {
+  stream() {
     return highlandProc
       .from((new Command(this._pdfPath, this._options)).run());
   }
 
-  extractStreamCsv(callback) {
-    this.streamCsv()
+  streamSections(callback) {
+    this.stream()
         .map(data => data.toString())
         .split()
         .collect()
@@ -21,7 +21,7 @@ class Tabula {
         .each(data => callback(null, data));
   }
 
-  extractCsv() {
+  getData() {
     const cmd = new Command(this._pdfPath, this._options);
     const result = cmd.runSync();
     const {
